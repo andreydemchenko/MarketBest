@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct MarketBestApp: App {
+    
+    private let dependencyContainer = DependencyContainer()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .environmentObject(dependencyContainer)
         }
     }
 }
