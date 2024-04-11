@@ -8,9 +8,9 @@
 import Foundation
 
 class SignOutUseCase {
-    private let repository: UserRepository
+    private let repository: AuthRepository
     
-    init(repository: UserRepository) {
+    init(repository: AuthRepository) {
         self.repository = repository
     }
     
