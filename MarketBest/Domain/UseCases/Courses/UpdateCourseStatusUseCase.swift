@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class UpdateCourseStatusUseCase {
+    private let repository: CourseRepository
+    
+    init(repository: CourseRepository) {
+        self.repository = repository
+    }
+    
+    func execute(courseId: UUID, status: CourseStatus) async throws {
+        return try await repository.updateCourseStatus(id: courseId, status: status)
+    }
+}

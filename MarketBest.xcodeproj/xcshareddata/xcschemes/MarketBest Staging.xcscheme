@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "52E3BA6C2BC41B7600BBB871"
-               BuildableName = "MarketBest.app"
+               BuildableName = "MarketBest Development.app"
                BlueprintName = "MarketBest"
                ReferencedContainer = "container:MarketBest.xcodeproj">
             </BuildableReference>
@@ -68,7 +68,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "52E3BA6C2BC41B7600BBB871"
-            BuildableName = "MarketBest.app"
+            BuildableName = "MarketBest Development.app"
             BlueprintName = "MarketBest"
             ReferencedContainer = "container:MarketBest.xcodeproj">
          </BuildableReference>
@@ -85,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "52E3BA6C2BC41B7600BBB871"
-            BuildableName = "MarketBest.app"
+            BuildableName = "MarketBest Development.app"
             BlueprintName = "MarketBest"
             ReferencedContainer = "container:MarketBest.xcodeproj">
          </BuildableReference>

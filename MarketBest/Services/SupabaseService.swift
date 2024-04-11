@@ -24,7 +24,7 @@ class SupabaseService<T: Codable> {
         return response
     }
     
-    func fetchById(columnName: String, id: String) async throws -> [T] {
+    func fetchById(columnName: String, id: UUID) async throws -> [T]? {
         let response: [T] = try await supabase.database.from(tableName).select().eq(columnName, value: id).execute().value
         return response
     }
@@ -33,11 +33,11 @@ class SupabaseService<T: Codable> {
         try await supabase.database.from(tableName).insert(item).execute().value
     }
     
-    func update<U: Encodable>(id: String, fields: U) async throws {
+    func update<U: Encodable>(id: UUID, fields: U) async throws {
         try await supabase.database.from(tableName).update(fields).eq("id", value: id).execute().value
     }
     
-    func delete(id: String) async throws {
+    func delete(id: UUID) async throws {
         try await supabase.database.from(tableName).delete().eq("id", value: id).execute()
     }
 }

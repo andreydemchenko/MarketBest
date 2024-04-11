@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class FetchMyCoursesUseCase {
+    private let repository: CourseRepository
+    
+    init(repository: CourseRepository) {
+        self.repository = repository
+    }
+    
+    func execute(userId: UUID) async throws -> [CourseModel] {
+        return try await repository.fetchMyCourses(userId: userId)
+    }
+}

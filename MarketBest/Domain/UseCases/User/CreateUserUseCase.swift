@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class CreateUserUseCase {
+    private let repository: UserRepository
+    
+    init(repository: UserRepository) {
+        self.repository = repository
+    }
+    
+    func execute(user: UserModel) async throws {
+        return try await repository.createUser(user: user)
+    }
+}

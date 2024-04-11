@@ -12,8 +12,10 @@ protocol CoreDataRepresentable {
     associatedtype Model
     func update(with model: Model, in context: NSManagedObjectContext)
     func toModel() -> Model 
+    func hasChanges(comparedTo model: Model) -> Bool
 }
 
-protocol IdentifiableModel {
-    var id: String { get }
+protocol IdentifiableModel: Hashable {
+    var id: UUID { get }
+    
 }

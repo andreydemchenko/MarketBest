@@ -9,5 +9,5 @@ import Foundation
 
 protocol SupabaseModel: Codable {
     static var tableName: String { get }
-    var id: String { get }
+    var id: UUID { get }
 }

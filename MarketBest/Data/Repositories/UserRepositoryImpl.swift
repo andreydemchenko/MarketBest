@@ -8,7 +8,7 @@
 import Foundation
 
 class UserRepositoryImpl: UserRepository {
-    
+
     private let remoteDataSource: RemoteDataSource<UserModel>
     private let localDataSource: LocalDataSource<UserEntity>
     
@@ -17,17 +17,37 @@ class UserRepositoryImpl: UserRepository {
         self.localDataSource = localDataSource
     }
     
+    func createUser(user: UserModel) async throws {
+        do {
+            let _ = try await remoteDataSource.create(model: user)
+            try await localDataSource.create(model: user)
+        } catch {
+            throw error
+        }
+    }
+    
+    func updateUser(user: UserModel) async throws {
+        do {
+            let _ = try await remoteDataSource.update(model: user)
+            try await localDataSource.create(model: user)
+        } catch {
+            throw error
+        }
+    }
+    
     func fetchCurrentUser() async throws -> UserModel? {
         do {
             let user = try await remoteDataSource.fetchCurrentUser()
+            print("fetchCurrentUser: \(user)")
             if let user {
                 try await localDataSource.saveOrUpdateUser(model: user)
             }
             return user
         } catch {
+            print("failure in fetchCurrentUser: \(error)")
             // On failure, attempt to fetch courses from the local data source
             do {
-                let localUser = try await localDataSource.fetchById(id: "")
+                let localUser = try await localDataSource.fetchCurrentUser()
                 return localUser
             } catch {
                 throw error
@@ -35,7 +55,7 @@ class UserRepositoryImpl: UserRepository {
         }
     }
     
-    func updateUserRole(userId: String, newRole: UserRole) async throws {
+    func updateUserRole(userId: UUID, newRole: UserRole) async throws {
         do {
             try await remoteDataSource.updateUserRole(userId: userId, newRole: newRole)
             if var currentUser = try? await fetchCurrentUser() {
@@ -47,12 +67,4 @@ class UserRepositoryImpl: UserRepository {
         }
     }
     
-    func signOut() async throws {
-        do {
-            try await remoteDataSource.signOut()
-            try await localDataSource.removeCurrentUser()
-        } catch {
-            throw error
-        }
-    }
 }

@@ -14,7 +14,7 @@ class SignInUseCase {
         self.repository = repository
     }
     
-    func execute(email: String, password: String) async throws {
+    func execute(email: String, password: String) async throws -> String? {
         return try await repository.signIn(email: email, password: password)
     }
 }

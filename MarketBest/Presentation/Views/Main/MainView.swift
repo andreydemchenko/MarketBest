@@ -7,26 +7,57 @@
 
 import Foundation
 import SwiftUI
+import NavigationBackport
 
 struct MainView: View {
-    @EnvironmentObject var container: DependencyContainer
+    @EnvironmentObject var router: Router
+    
+    init() {
+        UITabBar.appearance().isHidden = true
+    }
+    
+    @State private var selectedTab: Tab = Tab.home
+    
     
     var body: some View {
-        List {
-            if container.authStateManager.canAccess(.viewCourses) {
-                Text("Course List")
-                // Display courses
-            }
-            if container.authStateManager.canAccess(.purchaseCourse) {
-                Button("Purchase Course") {
-                    // Handle purchase
+        NBNavigationStack(path: $router.path) {
+            ZStack(alignment: .bottom) {
+                TabView(selection: $selectedTab) {
+                    router.route(to: .library)
+                    router.route(to: .favourites)
+                    router.route(to: .myCourses)
+                    router.route(to: .profile)
                 }
+                CustomBottomTabBarView(currentTab: $selectedTab)
+                    .padding(.bottom)
             }
-            if container.authStateManager.canAccess(.createCourse) {
-                Button("Create Course") {
-                    // Navigate to create course screen
-                }
+            .nbNavigationDestination(for: Screen.self) { screen in
+                router.route(to: screen)
             }
+        }
+    }
+}
+
+enum Tab: String, Hashable, CaseIterable {
+    case home = "Home"
+    case favourites = "Favourites"
+    case myCourses = "My courses"
+    case profile = "Profile"
+    
+    var index: Int {
+        return Self.allCases.firstIndex(of: self) ?? 0
+    }
+    
+    var imageName: String {
+        switch self {
+        case .home:
+            return "house.fill"
+        case .favourites:
+            return "heart.fill"
+        case .myCourses:
+            return "rectangle.fill.badge.plus"
+        case .profile:
+            return "person.fill"
         }
     }
 }

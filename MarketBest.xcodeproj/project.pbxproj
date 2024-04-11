@@ -7,6 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5299EA6E2BC7F6E2007C72BF /* CourseDetailsIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299EA6D2BC7F6E2007C72BF /* CourseDetailsIView.swift */; };
+		5299EA702BC7F6F6007C72BF /* AddEditCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299EA6F2BC7F6F6007C72BF /* AddEditCourseView.swift */; };
+		5299EA722BC7F714007C72BF /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299EA712BC7F714007C72BF /* LibraryView.swift */; };
+		5299EA742BC7F796007C72BF /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299EA732BC7F796007C72BF /* FavouritesView.swift */; };
+		5299EA772BC80E32007C72BF /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299EA762BC80E32007C72BF /* Double+Ext.swift */; };
+		5299EA792BC81532007C72BF /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299EA782BC81532007C72BF /* View+Ext.swift */; };
+		5299EA7B2BC816CA007C72BF /* AddEditCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299EA7A2BC816CA007C72BF /* AddEditCourseViewModel.swift */; };
+		5299EA7D2BC82537007C72BF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299EA7C2BC82537007C72BF /* Router.swift */; };
+		5299EA7F2BC831E5007C72BF /* MyCoursesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299EA7E2BC831E5007C72BF /* MyCoursesViewModel.swift */; };
+		5299EA812BC8324D007C72BF /* FetchMyCoursesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299EA802BC8324D007C72BF /* FetchMyCoursesUseCase.swift */; };
+		52DD41D22BC6E4DD00660141 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41D12BC6E4DD00660141 /* SplashView.swift */; };
+		52DD41D42BC6EDBF00660141 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41D32BC6EDBF00660141 /* CustomTabBar.swift */; };
+		52DD41D82BC70A6900660141 /* ProfileWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41D72BC70A6900660141 /* ProfileWrapperView.swift */; };
+		52DD41DA2BC7146A00660141 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41D92BC7146A00660141 /* Color+Ext.swift */; };
+		52DD41DC2BC714A600660141 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41DB2BC714A600660141 /* String+Ext.swift */; };
+		52DD41DF2BC7D14800660141 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41DE2BC7D14800660141 /* Order.swift */; };
+		52DD41E12BC7E69D00660141 /* CreateCourseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41E02BC7E69D00660141 /* CreateCourseUseCase.swift */; };
+		52DD41E32BC7E6B200660141 /* EditCourseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41E22BC7E6B200660141 /* EditCourseUseCase.swift */; };
+		52DD41E52BC7E6CD00660141 /* UpdateCourseStatusUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41E42BC7E6CD00660141 /* UpdateCourseStatusUseCase.swift */; };
+		52DD41E72BC7EAA200660141 /* CourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41E62BC7EAA200660141 /* CourseViewModel.swift */; };
+		52DD41EB2BC7EBFF00660141 /* MyCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41EA2BC7EBFF00660141 /* MyCoursesView.swift */; };
+		52DD41ED2BC7EC4100660141 /* MyCourseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD41EC2BC7EC4100660141 /* MyCourseItemView.swift */; };
 		52E3BA712BC41B7600BBB871 /* MarketBestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BA702BC41B7600BBB871 /* MarketBestApp.swift */; };
 		52E3BA752BC41B7900BBB871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52E3BA742BC41B7900BBB871 /* Assets.xcassets */; };
 		52E3BA782BC41B7900BBB871 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52E3BA772BC41B7900BBB871 /* Preview Assets.xcassets */; };
@@ -14,7 +36,6 @@
 		52E3BA8C2BC41B7900BBB871 /* MarketBestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BA8B2BC41B7900BBB871 /* MarketBestUITests.swift */; };
 		52E3BA8E2BC41B7900BBB871 /* MarketBestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BA8D2BC41B7900BBB871 /* MarketBestUITestsLaunchTests.swift */; };
 		52E3BA9C2BC52E6700BBB871 /* NavigationBackport in Frameworks */ = {isa = PBXBuildFile; productRef = 52E3BA9B2BC52E6700BBB871 /* NavigationBackport */; };
-		52E3BAAF2BC532A400BBB871 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BAAE2BC532A400BBB871 /* Extensions.swift */; };
 		52E3BAB12BC532B100BBB871 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BAB02BC532B100BBB871 /* Constants.swift */; };
 		52E3BAB32BC5461700BBB871 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BAB22BC5461700BBB871 /* RemoteDataSource.swift */; };
 		52E3BAB52BC5462800BBB871 /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BAB42BC5462800BBB871 /* LocalDataSource.swift */; };
@@ -46,6 +67,17 @@
 		52E3BB072BC5A9DF00BBB871 /* FetchCurrentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB062BC5A9DF00BBB871 /* FetchCurrentUserUseCase.swift */; };
 		52E3BB092BC5AA2000BBB871 /* SignOutUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB082BC5AA2000BBB871 /* SignOutUseCase.swift */; };
 		52E3BB0C2BC5AD2000BBB871 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB0B2BC5AD2000BBB871 /* MainView.swift */; };
+		52E3BB0E2BC6641F00BBB871 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB0D2BC6641F00BBB871 /* AuthRepository.swift */; };
+		52E3BB102BC6646700BBB871 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB0F2BC6646700BBB871 /* AuthRepositoryImpl.swift */; };
+		52E3BB122BC6660E00BBB871 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB112BC6660E00BBB871 /* SignUpUseCase.swift */; };
+		52E3BB142BC6661A00BBB871 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB132BC6661A00BBB871 /* SignInUseCase.swift */; };
+		52E3BB192BC667EA00BBB871 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB182BC667EA00BBB871 /* AuthViewModel.swift */; };
+		52E3BB212BC66F5600BBB871 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB202BC66F5600BBB871 /* SignUpView.swift */; };
+		52E3BB232BC684EC00BBB871 /* CreateUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB222BC684EC00BBB871 /* CreateUserUseCase.swift */; };
+		52E3BB252BC684FB00BBB871 /* UpdateUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB242BC684FB00BBB871 /* UpdateUserUseCase.swift */; };
+		52E3BB272BC6876D00BBB871 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB262BC6876D00BBB871 /* SignInView.swift */; };
+		52E3BB292BC6887300BBB871 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB282BC6887300BBB871 /* ProfileView.swift */; };
+		52E3BB2B2BC68C4000BBB871 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3BB2A2BC68C4000BBB871 /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +98,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5299EA6D2BC7F6E2007C72BF /* CourseDetailsIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailsIView.swift; sourceTree = "<group>"; };
+		5299EA6F2BC7F6F6007C72BF /* AddEditCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditCourseView.swift; sourceTree = "<group>"; };
+		5299EA712BC7F714007C72BF /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		5299EA732BC7F796007C72BF /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		5299EA762BC80E32007C72BF /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
+		5299EA782BC81532007C72BF /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		5299EA7A2BC816CA007C72BF /* AddEditCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditCourseViewModel.swift; sourceTree = "<group>"; };
+		5299EA7C2BC82537007C72BF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		5299EA7E2BC831E5007C72BF /* MyCoursesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoursesViewModel.swift; sourceTree = "<group>"; };
+		5299EA802BC8324D007C72BF /* FetchMyCoursesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMyCoursesUseCase.swift; sourceTree = "<group>"; };
+		52DD41D12BC6E4DD00660141 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		52DD41D32BC6EDBF00660141 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		52DD41D72BC70A6900660141 /* ProfileWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWrapperView.swift; sourceTree = "<group>"; };
+		52DD41D92BC7146A00660141 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		52DD41DB2BC714A600660141 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		52DD41DE2BC7D14800660141 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		52DD41E02BC7E69D00660141 /* CreateCourseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCourseUseCase.swift; sourceTree = "<group>"; };
+		52DD41E22BC7E6B200660141 /* EditCourseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCourseUseCase.swift; sourceTree = "<group>"; };
+		52DD41E42BC7E6CD00660141 /* UpdateCourseStatusUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCourseStatusUseCase.swift; sourceTree = "<group>"; };
+		52DD41E62BC7EAA200660141 /* CourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewModel.swift; sourceTree = "<group>"; };
+		52DD41EA2BC7EBFF00660141 /* MyCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoursesView.swift; sourceTree = "<group>"; };
+		52DD41EC2BC7EC4100660141 /* MyCourseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCourseItemView.swift; sourceTree = "<group>"; };
 		52E3BA6D2BC41B7600BBB871 /* MarketBest Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MarketBest Staging.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52E3BA702BC41B7600BBB871 /* MarketBestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketBestApp.swift; sourceTree = "<group>"; };
 		52E3BA742BC41B7900BBB871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,7 +129,6 @@
 		52E3BA872BC41B7900BBB871 /* MarketBestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarketBestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52E3BA8B2BC41B7900BBB871 /* MarketBestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketBestUITests.swift; sourceTree = "<group>"; };
 		52E3BA8D2BC41B7900BBB871 /* MarketBestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketBestUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		52E3BAAE2BC532A400BBB871 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		52E3BAB02BC532B100BBB871 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		52E3BAB22BC5461700BBB871 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 		52E3BAB42BC5462800BBB871 /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
@@ -101,6 +154,17 @@
 		52E3BB062BC5A9DF00BBB871 /* FetchCurrentUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCurrentUserUseCase.swift; sourceTree = "<group>"; };
 		52E3BB082BC5AA2000BBB871 /* SignOutUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutUseCase.swift; sourceTree = "<group>"; };
 		52E3BB0B2BC5AD2000BBB871 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		52E3BB0D2BC6641F00BBB871 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		52E3BB0F2BC6646700BBB871 /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = "<group>"; };
+		52E3BB112BC6660E00BBB871 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
+		52E3BB132BC6661A00BBB871 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
+		52E3BB182BC667EA00BBB871 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		52E3BB202BC66F5600BBB871 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		52E3BB222BC684EC00BBB871 /* CreateUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserUseCase.swift; sourceTree = "<group>"; };
+		52E3BB242BC684FB00BBB871 /* UpdateUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserUseCase.swift; sourceTree = "<group>"; };
+		52E3BB262BC6876D00BBB871 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		52E3BB282BC6887300BBB871 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		52E3BB2A2BC68C4000BBB871 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +200,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5299EA752BC7F79B007C72BF /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				5299EA732BC7F796007C72BF /* FavouritesView.swift */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		52DD41DD2BC714C700660141 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52DD41D92BC7146A00660141 /* Color+Ext.swift */,
+				52DD41DB2BC714A600660141 /* String+Ext.swift */,
+				5299EA762BC80E32007C72BF /* Double+Ext.swift */,
+				5299EA782BC81532007C72BF /* View+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52DD41E82BC7EB0B00660141 /* MyCourses */ = {
+			isa = PBXGroup;
+			children = (
+				52DD41EA2BC7EBFF00660141 /* MyCoursesView.swift */,
+				52DD41EC2BC7EC4100660141 /* MyCourseItemView.swift */,
+			);
+			path = MyCourses;
+			sourceTree = "<group>";
+		};
+		52DD41E92BC7EB4700660141 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				5299EA712BC7F714007C72BF /* LibraryView.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		52E3BA642BC41B7600BBB871 = {
 			isa = PBXGroup;
 			children = (
@@ -161,12 +261,12 @@
 			isa = PBXGroup;
 			children = (
 				52E3BB012BC5733E00BBB871 /* Info.plist */,
-				52E3BAA22BC530E300BBB871 /* App */,
 				52E3BAA12BC530C000BBB871 /* Services */,
-				52E3BAA02BC530B800BBB871 /* Utils */,
-				52E3BA9F2BC5309B00BBB871 /* Presentation */,
 				52E3BA9E2BC5308500BBB871 /* Data */,
 				52E3BA9D2BC5307100BBB871 /* Domain */,
+				52E3BA9F2BC5309B00BBB871 /* Presentation */,
+				52E3BAA22BC530E300BBB871 /* App */,
+				52E3BAA02BC530B800BBB871 /* Utils */,
 				52E3BA742BC41B7900BBB871 /* Assets.xcassets */,
 				52E3BA762BC41B7900BBB871 /* Preview Content */,
 			);
@@ -231,8 +331,8 @@
 		52E3BAA02BC530B800BBB871 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				52DD41DD2BC714C700660141 /* Extensions */,
 				52E3BAEA2BC56B2C00BBB871 /* CredentialManager.swift */,
-				52E3BAAE2BC532A400BBB871 /* Extensions.swift */,
 				52E3BAB02BC532B100BBB871 /* Constants.swift */,
 				52E3BAEC2BC56CB200BBB871 /* Configuration.swift */,
 				52E3BAEF2BC56ECE00BBB871 /* Development.plist */,
@@ -262,6 +362,11 @@
 		52E3BAA32BC5311F00BBB871 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5299EA752BC7F79B007C72BF /* Favourites */,
+				52E3BB1F2BC66B7300BBB871 /* Moderation */,
+				52E3BB1C2BC66B3800BBB871 /* Courses */,
+				52E3BB1B2BC66B3200BBB871 /* Profile */,
+				52E3BB1A2BC66B2100BBB871 /* Auth */,
 				52E3BB0A2BC5AD1400BBB871 /* Main */,
 			);
 			path = Views;
@@ -270,6 +375,11 @@
 		52E3BAA42BC5312D00BBB871 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				52E3BB182BC667EA00BBB871 /* AuthViewModel.swift */,
+				52E3BB2A2BC68C4000BBB871 /* ProfileViewModel.swift */,
+				52DD41E62BC7EAA200660141 /* CourseViewModel.swift */,
+				5299EA7A2BC816CA007C72BF /* AddEditCourseViewModel.swift */,
+				5299EA7E2BC831E5007C72BF /* MyCoursesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -278,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				52E3BB042BC5A92600BBB871 /* AuthStateManager.swift */,
+				5299EA7C2BC82537007C72BF /* Router.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -289,6 +400,7 @@
 				52E3BABE2BC547B700BBB871 /* UserRepositoryImpl.swift */,
 				52E3BADF2BC562D400BBB871 /* CoreDataRepresentable.swift */,
 				52E3BAE32BC5670E00BBB871 /* SupabaseModelCodable.swift */,
+				52E3BB0F2BC6646700BBB871 /* AuthRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -323,6 +435,7 @@
 			children = (
 				52E3BAB82BC5470F00BBB871 /* Course.swift */,
 				52E3BAC42BC5512500BBB871 /* User.swift */,
+				52DD41DE2BC7D14800660141 /* Order.swift */,
 				52E3BADC2BC5616200BBB871 /* Entities.xcdatamodeld */,
 			);
 			path = Models;
@@ -338,9 +451,9 @@
 		52E3BAAC2BC531A900BBB871 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				52E3BABA2BC5477200BBB871 /* FetchCoursesUseCase.swift */,
-				52E3BB062BC5A9DF00BBB871 /* FetchCurrentUserUseCase.swift */,
-				52E3BB082BC5AA2000BBB871 /* SignOutUseCase.swift */,
+				52E3BB172BC666A000BBB871 /* User */,
+				52E3BB162BC6668F00BBB871 /* Courses */,
+				52E3BB152BC6668A00BBB871 /* Auth */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -350,6 +463,7 @@
 			children = (
 				52E3BAB62BC546EF00BBB871 /* CourseRepository.swift */,
 				52E3BAC62BC5530100BBB871 /* UserRepository.swift */,
+				52E3BB0D2BC6641F00BBB871 /* AuthRepository.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -365,8 +479,94 @@
 			isa = PBXGroup;
 			children = (
 				52E3BB0B2BC5AD2000BBB871 /* MainView.swift */,
+				52DD41D12BC6E4DD00660141 /* SplashView.swift */,
+				52DD41D32BC6EDBF00660141 /* CustomTabBar.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		52E3BB152BC6668A00BBB871 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				52E3BB082BC5AA2000BBB871 /* SignOutUseCase.swift */,
+				52E3BB112BC6660E00BBB871 /* SignUpUseCase.swift */,
+				52E3BB132BC6661A00BBB871 /* SignInUseCase.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		52E3BB162BC6668F00BBB871 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				52E3BABA2BC5477200BBB871 /* FetchCoursesUseCase.swift */,
+				52DD41E02BC7E69D00660141 /* CreateCourseUseCase.swift */,
+				52DD41E22BC7E6B200660141 /* EditCourseUseCase.swift */,
+				52DD41E42BC7E6CD00660141 /* UpdateCourseStatusUseCase.swift */,
+				5299EA802BC8324D007C72BF /* FetchMyCoursesUseCase.swift */,
+			);
+			path = Courses;
+			sourceTree = "<group>";
+		};
+		52E3BB172BC666A000BBB871 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				52E3BB062BC5A9DF00BBB871 /* FetchCurrentUserUseCase.swift */,
+				52E3BB222BC684EC00BBB871 /* CreateUserUseCase.swift */,
+				52E3BB242BC684FB00BBB871 /* UpdateUserUseCase.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		52E3BB1A2BC66B2100BBB871 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				52E3BB202BC66F5600BBB871 /* SignUpView.swift */,
+				52E3BB262BC6876D00BBB871 /* SignInView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		52E3BB1B2BC66B3200BBB871 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				52E3BB282BC6887300BBB871 /* ProfileView.swift */,
+				52DD41D72BC70A6900660141 /* ProfileWrapperView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		52E3BB1C2BC66B3800BBB871 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				52DD41E92BC7EB4700660141 /* Library */,
+				52DD41E82BC7EB0B00660141 /* MyCourses */,
+				52E3BB1E2BC66B5700BBB871 /* CourseDetails */,
+				52E3BB1D2BC66B5000BBB871 /* AddEditCourse */,
+			);
+			path = Courses;
+			sourceTree = "<group>";
+		};
+		52E3BB1D2BC66B5000BBB871 /* AddEditCourse */ = {
+			isa = PBXGroup;
+			children = (
+				5299EA6F2BC7F6F6007C72BF /* AddEditCourseView.swift */,
+			);
+			path = AddEditCourse;
+			sourceTree = "<group>";
+		};
+		52E3BB1E2BC66B5700BBB871 /* CourseDetails */ = {
+			isa = PBXGroup;
+			children = (
+				5299EA6D2BC7F6E2007C72BF /* CourseDetailsIView.swift */,
+			);
+			path = CourseDetails;
+			sourceTree = "<group>";
+		};
+		52E3BB1F2BC66B7300BBB871 /* Moderation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Moderation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,31 +714,63 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52DD41D82BC70A6900660141 /* ProfileWrapperView.swift in Sources */,
 				52E3BAE92BC56ADB00BBB871 /* NetworkManager.swift in Sources */,
+				5299EA772BC80E32007C72BF /* Double+Ext.swift in Sources */,
+				52E3BB142BC6661A00BBB871 /* SignInUseCase.swift in Sources */,
+				52DD41D42BC6EDBF00660141 /* CustomTabBar.swift in Sources */,
 				52E3BB092BC5AA2000BBB871 /* SignOutUseCase.swift in Sources */,
+				5299EA812BC8324D007C72BF /* FetchMyCoursesUseCase.swift in Sources */,
 				52E3BAC92BC5552D00BBB871 /* DependencyContainer.swift in Sources */,
 				52E3BAC72BC5530100BBB871 /* UserRepository.swift in Sources */,
+				5299EA7B2BC816CA007C72BF /* AddEditCourseViewModel.swift in Sources */,
+				52E3BB102BC6646700BBB871 /* AuthRepositoryImpl.swift in Sources */,
+				52E3BB272BC6876D00BBB871 /* SignInView.swift in Sources */,
+				52E3BB252BC684FB00BBB871 /* UpdateUserUseCase.swift in Sources */,
 				52E3BB052BC5A92600BBB871 /* AuthStateManager.swift in Sources */,
+				52DD41E52BC7E6CD00660141 /* UpdateCourseStatusUseCase.swift in Sources */,
 				52E3BAB52BC5462800BBB871 /* LocalDataSource.swift in Sources */,
 				52E3BAB92BC5470F00BBB871 /* Course.swift in Sources */,
 				52E3BAB32BC5461700BBB871 /* RemoteDataSource.swift in Sources */,
+				5299EA702BC7F6F6007C72BF /* AddEditCourseView.swift in Sources */,
+				52E3BB292BC6887300BBB871 /* ProfileView.swift in Sources */,
 				52E3BABB2BC5477200BBB871 /* FetchCoursesUseCase.swift in Sources */,
+				52DD41E32BC7E6B200660141 /* EditCourseUseCase.swift in Sources */,
+				5299EA742BC7F796007C72BF /* FavouritesView.swift in Sources */,
+				5299EA7D2BC82537007C72BF /* Router.swift in Sources */,
+				5299EA792BC81532007C72BF /* View+Ext.swift in Sources */,
+				52DD41ED2BC7EC4100660141 /* MyCourseItemView.swift in Sources */,
+				5299EA7F2BC831E5007C72BF /* MyCoursesViewModel.swift in Sources */,
 				52E3BA712BC41B7600BBB871 /* MarketBestApp.swift in Sources */,
+				52DD41EB2BC7EBFF00660141 /* MyCoursesView.swift in Sources */,
 				52E3BAE42BC5670E00BBB871 /* SupabaseModelCodable.swift in Sources */,
 				52E3BAED2BC56CB200BBB871 /* Configuration.swift in Sources */,
+				52E3BB232BC684EC00BBB871 /* CreateUserUseCase.swift in Sources */,
 				52E3BABD2BC547A700BBB871 /* CourseRepositoryImpl.swift in Sources */,
+				52DD41DA2BC7146A00660141 /* Color+Ext.swift in Sources */,
 				52E3BB0C2BC5AD2000BBB871 /* MainView.swift in Sources */,
+				52E3BB212BC66F5600BBB871 /* SignUpView.swift in Sources */,
+				52DD41E12BC7E69D00660141 /* CreateCourseUseCase.swift in Sources */,
+				52DD41D22BC6E4DD00660141 /* SplashView.swift in Sources */,
 				52E3BAE22BC563A300BBB871 /* CoreDataStack.swift in Sources */,
 				52E3BB072BC5A9DF00BBB871 /* FetchCurrentUserUseCase.swift in Sources */,
+				52E3BB122BC6660E00BBB871 /* SignUpUseCase.swift in Sources */,
 				52E3BAC12BC5481800BBB871 /* SupabaseService.swift in Sources */,
+				52E3BB192BC667EA00BBB871 /* AuthViewModel.swift in Sources */,
 				52E3BABF2BC547B700BBB871 /* UserRepositoryImpl.swift in Sources */,
 				52E3BAC52BC5512500BBB871 /* User.swift in Sources */,
+				5299EA722BC7F714007C72BF /* LibraryView.swift in Sources */,
 				52E3BAE02BC562D400BBB871 /* CoreDataRepresentable.swift in Sources */,
-				52E3BAAF2BC532A400BBB871 /* Extensions.swift in Sources */,
+				52E3BB2B2BC68C4000BBB871 /* ProfileViewModel.swift in Sources */,
+				52DD41DC2BC714A600660141 /* String+Ext.swift in Sources */,
 				52E3BAEB2BC56B2C00BBB871 /* CredentialManager.swift in Sources */,
+				52DD41DF2BC7D14800660141 /* Order.swift in Sources */,
 				52E3BAB72BC546EF00BBB871 /* CourseRepository.swift in Sources */,
 				52E3BAB12BC532B100BBB871 /* Constants.swift in Sources */,
+				52DD41E72BC7EAA200660141 /* CourseViewModel.swift in Sources */,
 				52E3BADE2BC5616200BBB871 /* Entities.xcdatamodeld in Sources */,
+				5299EA6E2BC7F6E2007C72BF /* CourseDetailsIView.swift in Sources */,
+				52E3BB0E2BC6641F00BBB871 /* AuthRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +943,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -741,6 +974,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -910,6 +1144,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1041,6 +1276,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1165,6 +1401,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1289,6 +1526,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

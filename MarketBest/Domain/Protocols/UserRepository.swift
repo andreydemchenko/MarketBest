@@ -8,7 +8,8 @@
 import Foundation
 
 protocol UserRepository {
+    func createUser(user: UserModel) async throws
+    func updateUser(user: UserModel) async throws
     func fetchCurrentUser() async throws -> UserModel?
-    func updateUserRole(userId: String, newRole: UserRole) async throws
-    func signOut() async throws
+    func updateUserRole(userId: UUID, newRole: UserRole) async throws
 }

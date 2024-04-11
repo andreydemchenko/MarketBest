@@ -15,24 +15,51 @@ class LocalDataSource<Entity: NSManagedObject & CoreDataRepresentable> {
         self.container = container
     }
     
-    func save(models: [Entity.Model]) async throws {
+    func saveOrUpdate(models: [Entity.Model]) async throws where Entity.Model: IdentifiableModel  {
         let context = container.newBackgroundContext()
+        
         do {
             try await context.perform {
                 for model in models {
-                    guard let entity = NSEntityDescription.insertNewObject(forEntityName: String(describing: Entity.self), into: context) as? Entity else {
-                        continue
+                    let request = Entity.fetchRequest() as! NSFetchRequest<Entity>
+                    request.predicate = NSPredicate(format: "id == %@", model.id.uuidString)
+                    
+                    do {
+                        let results = try context.fetch(request)
+                        
+                        if let existingEntity = results.first {
+                            // Check if the existing entity needs updating
+                            if existingEntity.hasChanges(comparedTo: model) {
+                                existingEntity.update(with: model, in: context)
+                            } else {
+                                // No update needed, continue to the next model
+                                continue
+                            }
+                        } else {
+                            // Entity does not exist, insert a new one
+                            guard let newEntity = NSEntityDescription.insertNewObject(forEntityName: String(describing: Entity.self), into: context) as? Entity else {
+                                continue
+                            }
+                            newEntity.update(with: model, in: context)
+                        }
+                    } catch {
+                        // Handle fetch error
+                        throw error
                     }
-                    entity.update(with: model, in: context)
-                }
-                do {
-                    try context.save()
-                } catch {
-                    throw error
                 }
             }
         } catch {
+            // Handle fetch error
             throw error
+        }
+        
+        // Save changes if there are any
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                throw error
+            }
         }
     }
     
@@ -48,15 +75,15 @@ class LocalDataSource<Entity: NSManagedObject & CoreDataRepresentable> {
         }
     }
     
-    func create(model: Entity.Model) async throws {
-        try await save(models: [model])
+    func create(model: Entity.Model) async throws where Entity.Model: IdentifiableModel {
+        try await saveOrUpdate(models: [model])
     }
     
     func update(model: Entity.Model) async throws where Entity.Model: IdentifiableModel {
         let context = container.newBackgroundContext()
         return try await context.perform {
             let request = Entity.fetchRequest() as! NSFetchRequest<Entity>
-            request.predicate = NSPredicate(format: "id == %@", model.id)
+            request.predicate = NSPredicate(format: "id == %@", model.id.uuidString)
             
             let results = try context.fetch(request)
             if let entity = results.first {
@@ -107,22 +134,26 @@ extension LocalDataSource where Entity == UserEntity {
             try await context.perform {
                 // Check if the user already exists
                 let request: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
-                request.predicate = NSPredicate(format: "id == %@", model.id)
+                request.predicate = NSPredicate(format: "id == %@", model.id.uuidString)
                 
-                do {
-                    let results = try context.fetch(request)
-                    let userEntity: UserEntity
-                    if results.isEmpty {
-                        userEntity = UserEntity(context: context)
-                    } else {
-                        userEntity = results.first!
-                    }
-                    
-                    // Update the UserEntity with the UserModel data
+                let results = try context.fetch(request)
+                let userEntity: UserEntity
+                
+                if results.isEmpty {
+                    // If user doesn't exist, create new UserEntity
+                    userEntity = UserEntity(context: context)
                     userEntity.update(with: model, in: context)
+                } else if let existingUser = results.first {
+                    // Check if any data has changed before updating
+                    if existingUser.hasChanges(comparedTo: model) {
+                        existingUser.update(with: model, in: context)
+                    }
+                    // No need to save if there are no changes
+                }
+                
+                // Save only if there are changes in the context to be persisted
+                if context.hasChanges {
                     try context.save()
-                } catch {
-                    throw error
                 }
             }
         } catch {
@@ -155,6 +186,49 @@ extension LocalDataSource where Entity == UserEntity {
             do {
                 try context.execute(deleteRequest)
                 try context.save()
+            } catch {
+                throw error
+            }
+        }
+    }
+}
+
+extension LocalDataSource where Entity == CourseEntity {
+    
+    func updateCourseStatus(id: UUID, status: CourseStatus) async throws {
+        let context = container.newBackgroundContext()
+        do {
+            try await context.perform {
+                let request: NSFetchRequest<CourseEntity> = CourseEntity.fetchRequest()
+                request.predicate = NSPredicate(format: "id == %@", id.uuidString)
+                
+                do {
+                    let results = try context.fetch(request)
+                    if let course = results.first {
+                        course.status = status.rawValue
+                        try context.save()
+                    } else {
+                        // Handle the case where the course wasn't found
+                        throw NSError(domain: "ru.turbopro.marketbest", code: 404, userInfo: [NSLocalizedDescriptionKey: "Course not found"])
+                    }
+                } catch {
+                    throw error
+                }
+            }
+        } catch {
+            throw error
+        }
+    }
+    
+    func fetchMyCourses(userId: UUID) async throws -> [CourseModel] {
+        let context = container.viewContext
+        return try await context.perform {
+            let request: NSFetchRequest<CourseEntity> = CourseEntity.fetchRequest()
+            request.predicate = NSPredicate(format: "user.id == %@", userId as CVarArg)
+            
+            do {
+                let results = try context.fetch(request)
+                return results.map { $0.toModel() }
             } catch {
                 throw error
             }

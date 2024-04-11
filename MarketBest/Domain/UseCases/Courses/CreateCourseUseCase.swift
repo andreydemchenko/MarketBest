@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class CreateCourseUseCase {
+    private let repository: CourseRepository
+    
+    init(repository: CourseRepository) {
+        self.repository = repository
+    }
+    
+    func execute(course: CourseModel) async throws {
+        return try await repository.createCourse(course: course)
+    }
+}

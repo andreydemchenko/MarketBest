@@ -9,7 +9,17 @@ import SwiftUI
 
 struct SplashView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Spacer()
+            ProgressView()
+                .frame(width: 40, height: 40)
+                .foregroundStyle(.black)
+                .progressViewStyle(CircularProgressViewStyle())
+            Text("Loading...")
+                .frame(maxWidth: .infinity)
+            Spacer()
+        }
+        .background(.white)
     }
 }
 
