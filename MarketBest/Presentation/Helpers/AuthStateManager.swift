@@ -9,12 +9,7 @@ import Foundation
 
 class AuthStateManager: ObservableObject {
     @Published var currentUser: UserModel?
-    @Published var authFlow: AuthFlow = .signUp
     @Published var isLoadingUser: Bool = false
-    
-    enum AuthFlow {
-        case signIn, signUp
-    }
     
     private let currentUserUseCase: FetchCurrentUserUseCase
     
@@ -52,14 +47,6 @@ class AuthStateManager: ObservableObject {
         currentUser?.role ?? .guest
     }
     
-    func showSignIn() {
-        authFlow = .signIn
-    }
-    
-    func showSignUp() {
-        authFlow = .signUp
-    }
-    
     func canAccess(_ feature: AppFeature) -> Bool {
         switch userRole {
         case .admin:
@@ -73,5 +60,5 @@ class AuthStateManager: ObservableObject {
 }
 
 enum AppFeature {
-    case viewCourses, purchaseCourse, createCourse, editCourse, moderation
+    case viewCourses, purchaseCourse, createCourse, editCourse, publishCourse, moderation
 }

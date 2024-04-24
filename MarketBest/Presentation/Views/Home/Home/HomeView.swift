@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @EnvironmentObject var router: Router
     @EnvironmentObject var viewModel: HomeViewModel
     
     var body: some View {
@@ -23,7 +24,9 @@ struct HomeView: View {
                 HStack {
                     ForEach(viewModel.categorizedData, id: \.parent.id) { data in
                         CategoryView(parentCategory: data.parent, categories: data.children) { categoryId in
-                            print("Category clicked: \(categoryId)")
+                            let parentId = data.parent.id
+                            viewModel.categoryClicked(categoryId: categoryId, isParent: parentId == categoryId, childrenIds: data.children.map { $0.id }, parentId: parentId)
+                            router.path.append(.courses)
                         }
                     }
                 }
@@ -35,8 +38,8 @@ struct HomeView: View {
         .background(Color.backgroundColor)
     }
 }
-
-#Preview {
-    HomeView()
-        .environmentObject(HomeViewModel(fetchCategoriesUseCase: DependencyContainer().fetchCategoriesUseCase))
-}
+//
+//#Preview {
+//    HomeView()
+//        .environmentObject(HomeViewModel(fetchCategoriesUseCase: DependencyContainer().fetchCategoriesUseCase))
+//}

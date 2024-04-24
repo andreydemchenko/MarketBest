@@ -11,12 +11,14 @@ import Supabase
 class SupabaseService<T: Codable> {
     
     let supabase: SupabaseClient
+    let storageClient: SupabaseStorageClient
     let tableName: String
     
     
-    init(tableName: String, supabase: SupabaseClient) {
+    init(tableName: String, supabase: SupabaseClient, storageClient: SupabaseStorageClient) {
         self.tableName = tableName
         self.supabase = supabase
+        self.storageClient = storageClient
     }
     
     func fetchAll() async throws -> [T] {
@@ -24,8 +26,17 @@ class SupabaseService<T: Codable> {
         return response
     }
     
-    func fetchById(columnName: String, id: UUID) async throws -> [T]? {
-        let response: [T] = try await supabase.database.from(tableName).select().eq(columnName, value: id).execute().value
+    
+    func fetchByColumn(columnName: String, value: any URLQueryRepresentable) async throws -> [T]? {
+        let response: [T] = try await supabase.database.from(tableName).select().eq(columnName, value: value).execute().value
+        return response
+    }
+    
+    func fetchByIDs(columnName: String, ids: [UUID]) async throws -> [T] {
+        let response: [T] = try await supabase.database.from(tableName)
+                              .select()
+                              .in(columnName, value: ids)
+                              .execute().value
         return response
     }
     
@@ -39,5 +50,40 @@ class SupabaseService<T: Codable> {
     
     func delete(id: UUID) async throws {
         try await supabase.database.from(tableName).delete().eq("id", value: id).execute()
+    }
+    
+    func uploudFile(fileData: Data, bucketName: String, fileName: String, contentType: String) async throws -> URL? {
+        
+        try await storageClient
+            .from(bucketName)
+            .upload(path: fileName, file: fileData, options: FileOptions(cacheControl: "3600"))
+        
+        let secondsInYear = 31536000
+        let signedURL = try await storageClient
+          .from(bucketName)
+          .createSignedURL(path: fileName, expiresIn: secondsInYear * 3)
+        
+        return signedURL
+    }
+    
+    func removeFile(bucketName: String, fileName: String) async throws {
+        let _ = try await storageClient
+            .from(bucketName)
+            .remove(paths: [fileName])
+    }
+    
+    func fetchByCriteria(criteria: [String: [URLQueryRepresentable]]) async throws -> [T]? {
+        var databaseQuery = supabase.database.from(tableName).select()
+        
+        for (field, values) in criteria {
+            if values.count == 1 {
+                databaseQuery = databaseQuery.eq(field, value: values.first!)
+            } else {
+                databaseQuery = databaseQuery.in(field, value: values)
+            }
+        }
+        
+        let response: [T] = try await databaseQuery.execute().value
+        return response
     }
 }

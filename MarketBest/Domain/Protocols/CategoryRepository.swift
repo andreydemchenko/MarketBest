@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol CategoryRepository {
+    func fetchCategories(categoryIds: [UUID]?) async throws -> [CategoryModel]
+    func createCategory(category: CategoryModel) async throws
+    func editCategory(category: CategoryModel) async throws
+}

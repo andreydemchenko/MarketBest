@@ -13,7 +13,7 @@ import Kingfisher
 struct MyCourseDetailsView: View {
     
     @EnvironmentObject var router: Router
-    @EnvironmentObject var viewModel: CourseDetailsViewModel
+    @EnvironmentObject var viewModel: MyCourseDetailsViewModel
     @State private var isAnimating: Bool = false
     @State private var currentImageIndex: Int = 0
     

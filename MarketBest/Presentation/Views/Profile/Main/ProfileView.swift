@@ -11,6 +11,7 @@ import FancyScrollView
 struct ProfileView: View {
     @EnvironmentObject var stateManager: AuthStateManager
     @EnvironmentObject var viewModel: ProfileViewModel
+    @EnvironmentObject var router: Router
     
     @State private var isAnimatingImage: Bool = false
     @State private var isAnimating: Bool = false
@@ -21,6 +22,7 @@ struct ProfileView: View {
         if let user = stateManager.currentUser {
             FancyScrollView(
                 title: user.name,
+                titleColor: Color.primaryColor,
                 headerHeight: headerHeight,
                 scrollUpHeaderBehavior: .parallax,
                 scrollDownHeaderBehavior: .offset,
@@ -34,17 +36,17 @@ struct ProfileView: View {
                         .foregroundStyle(Color.primaryColor)
                     Spacer().frame(height: 40)
                     if viewModel.authStateManager.canAccess(.moderation) {
-                        ProfileItemView(title: "Модерация", imageName: "person.badge.clock", count: viewModel.moderationCourses.count, onTap: {
-                            
+                        ProfileItemView(title: "Модерация", imageName: "person.badge.clock", count: viewModel.courses.count, onTap: {
+                            router.path.append(.moderation)
                         }).task {
                             await viewModel.fetchModerationCourses()
                         }
                     }
-                    ProfileItemView(title: "Заказы", imageName: "cart", count: 2, onTap: {
-                        
+                    ProfileItemView(title: "Заказы", imageName: "cart", count: 0, onTap: {
+                        router.path.append(.orders)
                     })
                     ProfileItemView(title: "Оплата", imageName: "creditcard", count: 0, onTap: {
-                        
+                        router.path.append(.payments)
                     })
                     Spacer().frame(height: 60)
                     Button {
@@ -57,23 +59,24 @@ struct ProfileView: View {
                         }
                     } label: {
                         Text("Выйти из аккаунта")
-                            .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.redColor)
-                            .foregroundStyle(Color.tertiaryColor)
+                            .foregroundStyle(Color.accentColor)
                             .font(.mulishBoldFont(size: 16))
-                            .cornerRadius(16)
-                            .shadow(radius: 4)
                     }
                 }
                 .padding()
-                .background(Color.darkRedColor)
+                .background(Color.backgroundColor)
                 .task {
                     await viewModel.loadImage(user: user)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.darkRedColor)
+            .onAppear {
+                Task {
+                    await viewModel.fetchModerationCourses()
+                }
+            }
+            .background(Color.backgroundColor)
             .overlay {
                     ZStack {
                         if viewModel.isLoading {
@@ -115,14 +118,16 @@ struct ProfileView: View {
                         } label: {
                             Image("editIcon")
                                 .resizable()
+                                .renderingMode(.template)
                                 .frame(maxWidth: 32, maxHeight: 32)
+                                .foregroundStyle(Color.backgroundColor)
                         }
                             
                     }
                     .padding(20)
                 }
                 Rectangle()
-                    .foregroundStyle(Color.darkRedColor)
+                    .foregroundStyle(Color.backgroundColor)
                     .edgesIgnoringSafeArea(.top)
                     .frame(height: headerHeight/3)
             }
@@ -137,7 +142,7 @@ struct ProfileView: View {
                             .aspectRatio(contentMode: .fit)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.primaryColor, lineWidth: 4))
-                            .shadow(radius: 10)
+                            .shadow(color: Color.primaryColor, radius: 10)
                     } else if viewModel.isLoadingImage {
                         Group {
                             BarsLoader(isAnimating: $isAnimatingImage, color: Color.tertiaryColor)
@@ -193,10 +198,10 @@ struct ProfileItemView: View {
                     if count > 0 {
                         Text(count < 100 ? "\(count)" : "99+")
                             .font(.mulishMediumFont(size: 16))
-                            .foregroundStyle(Color.darkRed)
+                            .foregroundStyle(Color.backgroundColor)
                             .padding(.vertical, 2)
                             .padding(.horizontal, 6)
-                            .background(Color.redColor)
+                            .background(Color.accentColor)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                 }

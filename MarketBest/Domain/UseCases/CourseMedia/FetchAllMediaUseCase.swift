@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+class FetchAllMediaUseCase {
+    
+    private let repository: CourseMediaRepository
+    
+    init(repository: CourseMediaRepository) {
+        self.repository = repository
+    }
+    
+    func execute() async throws -> [CourseMediaItem] {
+        return try await repository.fetchAllMedia()
+    }
+    
+}

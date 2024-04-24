@@ -15,7 +15,7 @@ struct MarketBestApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(Router(container: dependencyContainer))
+                .environmentObject(Router(container: dependencyContainer, authStateManager: dependencyContainer.authStateManager))
         }
     }
 }

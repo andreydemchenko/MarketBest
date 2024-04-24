@@ -11,24 +11,31 @@ import NavigationBackport
 
 struct MainView: View {
     @EnvironmentObject var router: Router
-    
-    init() {
-        UITabBar.appearance().isHidden = true
-    }
-    
-    @State private var selectedTab: Tab = Tab.home
-    
+    //@ObservedObject var keyboardResponder = KeyboardResponder()
+    @State private var isTabBarVisible = true
     
     var body: some View {
+        Group {
+            if router.isLoading {
+                SplashView()
+            } else {
+                contentView
+            }
+        }
+    }
+
+    var contentView: some View {
         NBNavigationStack(path: $router.path) {
             ZStack(alignment: .bottom) {
-                TabView(selection: $selectedTab) {
+                TabView(selection: $router.selectedTab) {
                     router.route(to: .library)
                     router.route(to: .favourites)
                     router.route(to: .myCourses)
                     router.route(to: .profile)
                 }
-                CustomBottomTabBarView(currentTab: $selectedTab)
+                
+                CustomBottomTabBarView(currentTab: $router.selectedTab)
+                    .keyboardVisibilityAware(isVisible: $isTabBarVisible)
                     .padding(.bottom)
             }
             .nbNavigationDestination(for: Screen.self) { screen in
@@ -37,6 +44,7 @@ struct MainView: View {
         }
     }
 }
+
 
 enum Tab: String, Hashable, CaseIterable {
     case home = "Home"
@@ -60,4 +68,22 @@ enum Tab: String, Hashable, CaseIterable {
             return "person.fill"
         }
     }
+    
+    var title: String {
+        switch self {
+        case .home:
+            "Главная"
+        case .favourites:
+            "Избранное"
+        case .myCourses:
+            "Мои курсы"
+        case .profile:
+            "Профиль"
+        }
+    }
+}
+
+#Preview {
+    MainView()
+        .environmentObject(Router(container: DependencyContainer(), authStateManager: DependencyContainer().authStateManager))
 }

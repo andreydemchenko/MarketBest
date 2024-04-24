@@ -7,6 +7,7 @@
 
 import Foundation
 import Supabase
+import Storage
 
 class NetworkManager {
     
@@ -31,5 +32,17 @@ class NetworkManager {
     
     private var supabaseServiceKey: String {
         return Constants.supabaseServiceKey
+    }
+    
+    func storageClient() -> SupabaseStorageClient {
+        //        guard let jwt = try? await supabase.auth.session.accessToken else {
+        //            print("couldn't access auth")
+        //            return nil}
+        return SupabaseStorageClient(
+            configuration: StorageClientConfiguration(url: URL(string: "\(supabaseUrl)/storage/v1")!, headers: [
+                "Authorization": "Bearer \(supabaseServiceKey)",
+                "apikey": supabaseKey,
+            ])
+        )
     }
 }

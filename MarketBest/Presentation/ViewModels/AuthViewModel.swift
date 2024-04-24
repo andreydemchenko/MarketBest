@@ -25,39 +25,62 @@ class AuthViewModel: ObservableObject {
         self.createUserUseCase = createUserUseCase
     }
     
-    @MainActor
     func signUp(onSignUp: () -> Void) async {
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
         do {
-            isLoading = true
             if let id = try await signUpUseCase.execute(email: email, password: password), let uuid = UUID(uuidString: id) {
                 let user = UserModel(id: uuid, name: name, email: email, imageUrl: nil)
                 try await createUserUseCase.execute(user: user)
+                try await Task.sleep(seconds: 2)
                 onSignUp()
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
             } else {
-                errorMessage = "Coudln't authenticate a user"
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.errorMessage = "Coudln't authenticate a user"
+                }
             }
         } catch let error {
-            errorMessage = error.localizedDescription
+            DispatchQueue.main.async {
+                self.isLoading = false
+                self.errorMessage = error.localizedDescription
+            }
             print("error in sign up: \(errorMessage)")
         }
-        isLoading = false
     }
     
-    @MainActor
     func signIn(onSignIn: () -> Void) async {
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
+        
+        //defer { isLoading = false }
         do {
-            isLoading = true
             let id = try await signInUseCase.execute(email: email, password: password)
             if id == nil {
-                errorMessage = "Coudln't authenticate a user"
+                DispatchQueue.main.async {
+                    self.errorMessage = "Coudln't authenticate a user"
+                    self.isLoading = false
+                }
+                print("error in sign in")
                 return
             }
+            try await Task.sleep(seconds: 2)
             onSignIn()
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
         } catch let error {
-            errorMessage = error.localizedDescription
+            DispatchQueue.main.async {
+                self.errorMessage = error.localizedDescription
+                self.isLoading = false
+            }
             print("error in sign in: \(errorMessage)")
         }
-        isLoading = false
     }
     
 }

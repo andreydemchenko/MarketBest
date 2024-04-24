@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FetchMediaUseCase {
+class FetchCourseMediaUseCase {
     
     private let repository: CourseMediaRepository
     
@@ -16,7 +16,7 @@ class FetchMediaUseCase {
     }
     
     func execute(courseId: UUID) async throws -> [CourseMediaItem] {
-        return try await repository.fetchMedia(courseId: courseId)
+        return try await repository.fetchCourseMedia(courseId: courseId)
     }
     
 }

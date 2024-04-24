@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+class DeleteCourseUseCase {
+    
+    private let repository: CourseRepository
+    
+    init(repository: CourseRepository) {
+        self.repository = repository
+    }
+    
+    func execute(id: UUID) async throws {
+        return try await repository.deleteCourse(id: id)
+    }
+}

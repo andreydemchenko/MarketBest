@@ -9,9 +9,9 @@ import Foundation
 
 class UploadMediaItemUseCase {
     
-    private let repository: CourseRepository
+    private let repository: CourseMediaRepository
     
-    init(repository: CourseRepository) {
+    init(repository: CourseMediaRepository) {
         self.repository = repository
     }
     

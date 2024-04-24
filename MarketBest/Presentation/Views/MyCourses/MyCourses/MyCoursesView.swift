@@ -149,7 +149,7 @@ struct MyCoursesView: View {
                     }
                 }, onOpenDetails: {
                     if !viewModel.isLoadingMedia {
-                        router.path.append(.courseDetails(course: course))
+                        router.path.append(.myCourseDetails(course: course))
                     }
                 })
             }

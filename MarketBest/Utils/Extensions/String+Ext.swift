@@ -9,6 +9,10 @@ import Foundation
 
 extension String {
     
+    func isValidName() -> Bool {
+        return self.count >= 2
+    }
+    
     func isValidEmail() -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 

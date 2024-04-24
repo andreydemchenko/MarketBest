@@ -14,7 +14,7 @@ class FetchCoursesUseCase {
         self.repository = repository
     }
     
-    func execute() async throws -> [CourseModel] {
-        return try await repository.fetchCourses()
+    func execute(categoryIds: [UUID]? = nil) async throws -> [CourseModel] {
+        return try await repository.fetchCourses(categoryIds: categoryIds)
     }
 }

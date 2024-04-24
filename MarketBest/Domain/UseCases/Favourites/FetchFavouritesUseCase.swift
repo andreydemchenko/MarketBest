@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+class FetchFavouritesUseCase {
+    
+    private let repository: FavouritesRepository
+    
+    init(repository: FavouritesRepository) {
+        self.repository = repository
+    }
+    
+    func execute(userId: UUID, courseIds: [UUID]? = nil) async throws -> [FavouriteModel] {
+        return try await repository.fetchFavourites(userId: userId, courseIds: courseIds)
+    }
+    
+}

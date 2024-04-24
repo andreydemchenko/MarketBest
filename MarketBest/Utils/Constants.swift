@@ -17,4 +17,5 @@ struct Constants {
     static let supabaseUrl = URL(string: buildConfig.value(forKey: "SUPABASE_URL") ?? "http://default-supabase-url.com")!
     static let supabaseKey = buildConfig.value(forKey: "SUPABASE_KEY") ?? ""
     static let supabaseServiceKey = buildConfig.value(forKey: "SUPABASE_SERVICE_KEY") ?? ""
+    static let youtubeApiKey = buildConfig.value(forKey: "YOUTUBE_API_KEY") ?? ""
 }

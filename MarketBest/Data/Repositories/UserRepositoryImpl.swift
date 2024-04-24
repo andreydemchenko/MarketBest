@@ -29,7 +29,7 @@ class UserRepositoryImpl: UserRepository {
     func updateUser(user: UserModel) async throws {
         do {
             let _ = try await remoteDataSource.update(model: user)
-            try await localDataSource.create(model: user)
+            try await localDataSource.update(model: user)
         } catch {
             throw error
         }
@@ -40,18 +40,19 @@ class UserRepositoryImpl: UserRepository {
             let user = try await remoteDataSource.fetchCurrentUser()
             print("fetchCurrentUser: \(user)")
             if let user {
-                try await localDataSource.saveOrUpdateUser(model: user)
+                //try await localDataSource.saveOrUpdateUser(model: user)
             }
             return user
         } catch {
             print("failure in fetchCurrentUser: \(error)")
+            throw error
             // On failure, attempt to fetch courses from the local data source
-            do {
-                let localUser = try await localDataSource.fetchCurrentUser()
-                return localUser
-            } catch {
-                throw error
-            }
+//            do {
+//                let localUser = try await localDataSource.fetchCurrentUser()
+//                return localUser
+//            } catch {
+//                throw error
+//            }
         }
     }
     

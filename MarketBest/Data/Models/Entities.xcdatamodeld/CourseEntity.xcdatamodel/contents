@@ -5,10 +5,10 @@
         <attribute name="iconUrl" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="children" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CategoryEntity" inverseName="parent" inverseEntity="CategoryEntity"/>
-        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CategoryEntity" inverseName="children" inverseEntity="CategoryEntity"/>
+        <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CategoryEntity"/>
     </entity>
     <entity name="CourseEntity" representedClassName="CourseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="categoryId" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="courseDescription" attributeType="String"/>
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
@@ -19,6 +19,7 @@
         <attribute name="status" attributeType="String"/>
         <relationship name="durations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DurationEntity" inverseName="courses" inverseEntity="DurationEntity"/>
         <relationship name="educationForms" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="EducationFormEntity" inverseName="courses" inverseEntity="EducationFormEntity"/>
+        <relationship name="favourites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="favourites" inverseEntity="UserEntity"/>
         <relationship name="media" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CourseMediaEntity" inverseName="course" inverseEntity="CourseMediaEntity"/>
         <relationship name="opportunities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="OpportunityEntity" inverseName="courses" inverseEntity="OpportunityEntity"/>
         <relationship name="orders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="OrderEntity" inverseName="course" inverseEntity="OrderEntity"/>
@@ -65,6 +66,7 @@
         <attribute name="name" attributeType="String"/>
         <attribute name="role" attributeType="String"/>
         <relationship name="courses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CourseEntity" inverseName="user" inverseEntity="CourseEntity"/>
+        <relationship name="favourites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CourseEntity" inverseName="favourites" inverseEntity="CourseEntity"/>
         <relationship name="orders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="OrderEntity" inverseName="user" inverseEntity="OrderEntity"/>
     </entity>
 </model>
