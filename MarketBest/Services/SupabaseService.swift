@@ -72,18 +72,56 @@ class SupabaseService<T: Codable> {
             .remove(paths: [fileName])
     }
     
-    func fetchByCriteria(criteria: [String: [URLQueryRepresentable]]) async throws -> [T]? {
+    func fetchByCriteria(criteria: [String: [URLQueryRepresentable]], uuidFields: [String] = []) async throws -> [T]? {
         var databaseQuery = supabase.database.from(tableName).select()
-        
+
         for (field, values) in criteria {
-            if values.count == 1 {
-                databaseQuery = databaseQuery.eq(field, value: values.first!)
+            if uuidFields.contains(field) {
+                // Use 'in' operator if the field is a UUID and has multiple values
+                if values.count > 1 {
+                    databaseQuery = databaseQuery.in(field, value: values)
+                } else if let firstValue = values.first {
+                    databaseQuery = databaseQuery.eq(field, value: firstValue)
+                }
             } else {
-                databaseQuery = databaseQuery.in(field, value: values)
+                // Assume field is a string, use ilike for all values
+                for value in values {
+                    databaseQuery = databaseQuery.ilike(field, value: "%\(value)%")
+                }
             }
         }
         
         let response: [T] = try await databaseQuery.execute().value
         return response
     }
+    
+//    func fetchByCriteria(criteria: [String: [URLQueryRepresentable]], isEqual: Bool) async throws -> [T]? {
+//        var databaseQuery = supabase.database.from(tableName).select()
+//
+//        for (field, values) in criteria {
+//            if values.count == 1 {
+//                // Assume fields in criteria with single values are UUIDs needing exact matches
+//                let value = values.first!
+//                if isEqual {
+//                    databaseQuery = databaseQuery.eq(field, value: value)
+//                } else {
+//                    databaseQuery = databaseQuery.ilike(field, value: "%\(value)%")
+//                }
+//            } else if values.count > 1 {
+//                // Use the 'in' operator for fields that are likely UUIDs and have multiple values
+//                databaseQuery = databaseQuery.in(field, value: values)
+//            } else {
+//                // For any other case, particularly for text searches, consider using 'ilike'
+//                for value in values {
+//                    databaseQuery = databaseQuery.ilike(field, value: "%\(value)%")
+//                }
+//            }
+//        }
+//        
+//        let response: [T] = try await databaseQuery.execute().value
+//        return response
+//    }
+
+
+
 }

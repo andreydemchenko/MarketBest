@@ -16,4 +16,11 @@ extension Date {
         let dateString = dateFormatter.string(from: currentDate)
         return dateString
     }
+    
+    func toLocalDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
+        formatter.dateFormat = "d MMMM, HH:mm"
+        return formatter.string(from: self)
+    }
 }

@@ -86,17 +86,29 @@ extension RemoteDataSource where T == UserModel {
 
 extension RemoteDataSource where T == CourseModel {
     
-    func fetchCourses(categoryIds: [UUID]? = nil) async throws -> [T] {
+    func fetchCourses(categoryIds: [UUID]? = nil, name: String? = nil) async throws -> [T] {
         let service = SupabaseService<T>(tableName: T.tableName, supabase: supabaseClient, storageClient: storageClient)
         
-        if let categoryIds = categoryIds, !categoryIds.isEmpty {
-            let criteria = ["category_id": categoryIds]
-            return try await service.fetchByCriteria(criteria: criteria) ?? []
+        var criteria = [String: [URLQueryRepresentable]]()
+        
+        if let categoryIds, !categoryIds.isEmpty {
+            criteria["category_id"] = categoryIds
+        }
+        
+        if let name, !name.isEmpty {
+            criteria["name"] = [name]
+        }
+        
+        // Identify fields that should be treated as UUIDs
+        let uuidFields = ["category_id"] // Specify fields that are UUIDs
+        
+        if !criteria.isEmpty {
+            return try await service.fetchByCriteria(criteria: criteria, uuidFields: uuidFields) ?? []
         } else {
-            // Fetch all courses if no category IDs are specified
             return try await service.fetchAll()
         }
     }
+
     
     func updateCourseStatus(courseId: UUID, status: CourseStatus) async throws {
         let service = SupabaseService<T>(tableName: T.tableName, supabase: supabaseClient, storageClient: storageClient)
@@ -137,7 +149,8 @@ extension RemoteDataSource where T == FavouriteModel {
         
         if let courseIds, !courseIds.isEmpty {
             let criteria = ["user_id": [userId], "course_id": courseIds]
-            return try await service.fetchByCriteria(criteria: criteria) ?? []
+            let uuidFields = ["user_id", "course_id"]
+            return try await service.fetchByCriteria(criteria: criteria, uuidFields: uuidFields) ?? []
         } else {
             return try await service.fetchByColumn(columnName: "user_id", value: userId) ?? []
         }
@@ -147,7 +160,8 @@ extension RemoteDataSource where T == FavouriteModel {
         let service = SupabaseService<T>(tableName: T.tableName, supabase: supabaseClient, storageClient: storageClient)
         
         let criteria = ["user_id": [userId], "course_id": [courseId]]
-        let models = try await service.fetchByCriteria(criteria: criteria)
+        let uuidFields = ["user_id", "course_id"]
+        let models = try await service.fetchByCriteria(criteria: criteria, uuidFields: uuidFields)
         
         if let model = models?.first {
             try await service.delete(id: model.id)

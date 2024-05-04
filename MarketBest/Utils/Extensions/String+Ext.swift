@@ -24,4 +24,23 @@ extension String {
         return self.count >= requiredLength
     }
     
+    func inflectCourseName() -> String {
+        switch self.lowercased() {
+        case "аналитика":
+            return "аналитики"
+        case "дизайн":
+            return "дизайна"
+        case "программирование":
+            return "программировании"
+        case "менеджмент":
+            return "менеджмента"
+        case "маркетинг":
+            return "маркетинга"
+        case "разработка":
+            return "по разработке"
+        default:
+            return self
+        }
+    }
+    
 }

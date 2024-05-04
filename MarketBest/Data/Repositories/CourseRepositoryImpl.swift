@@ -17,10 +17,10 @@ class CourseRepositoryImpl: CourseRepository {
         self.localDataSource = localDataSource
     }
     
-    func fetchCourses(categoryIds: [UUID]?) async throws -> [CourseModel] {
+    func fetchCourses(categoryIds: [UUID]?, name: String?) async throws -> [CourseModel] {
         do {
             // Attempt to fetch courses from the remote data source
-            let courses = try await remoteDataSource.fetchCourses(categoryIds: categoryIds)
+            let courses = try await remoteDataSource.fetchCourses(categoryIds: categoryIds, name: name)
             //try await localDataSource.saveOrUpdate(models: courses)
             return courses
         } catch {

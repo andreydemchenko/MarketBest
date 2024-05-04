@@ -9,7 +9,7 @@ import Foundation
 
 protocol CourseRepository {
     func fetchCoursesByStatus(status: CourseStatus) async throws -> [CourseModel]
-    func fetchCourses(categoryIds: [UUID]?) async throws -> [CourseModel]
+    func fetchCourses(categoryIds: [UUID]?, name: String?) async throws -> [CourseModel]
     func fetchMyCourses(userId: UUID) async throws -> [CourseModel]
     func createCourse(course: CourseModel) async throws
     func editCourse(course: CourseModel) async throws

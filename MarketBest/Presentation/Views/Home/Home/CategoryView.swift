@@ -41,17 +41,16 @@ struct CategoryView: View {
                         .renderingMode(.template)
                         .foregroundStyle(Color.accentColor)
                         .frame(width: 16, height: 16)
-                        .padding(.trailing, 10)
+                        .padding(.trailing, 4)
 
-                    Text("Смотреть все курсы")
-                        .font(.mulishRegularFont(size: 15))
+                    Text("Все курсы \(parentCategory.name.inflectCourseName())")
+                        .font(.mulishRegularFont(size: 13))
                         .foregroundStyle(Color.accentColor)
                     
                     Spacer()
                 }
             }
-            .padding(.horizontal, 10)
-            .padding(.vertical, 6)
+            .padding(6)
         }
         .frame(width: 220, height: 420)
         .padding(8)
